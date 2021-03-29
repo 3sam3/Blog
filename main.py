@@ -8,6 +8,8 @@ from datetime import date
 import functools
 from flask_ckeditor import CKEditor, CKEditorField
 import os
+#need to add postgres support and secret all variables. Also add create delete paths.
+#also need to add edit and delete paths to blog posts
 
 app = Flask(__name__)
 Bootstrap(app)
