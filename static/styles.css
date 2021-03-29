@@ -1,0 +1,60 @@
+
+.display-heading {
+    font-size: 5rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 100;
+    color: black;
+}
+
+.display-heading:hover {
+    color: dark-green;
+}
+
+.title-page {
+    text-align: center;
+}
+
+.main {
+    margin-top: 50px;
+}
+
+.picture {
+    margin: 5%;
+}
+
+.nav {
+    background-color: white;
+    margin-bottom: 50px;
+}
+
+.nav-link {
+    color: black;
+    font-family: 'inter', sans-serif;
+    font-weight: 200;
+    font-size: 1.5rem;
+}
+
+.picture-house {
+    max-width: 700px;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+button {
+   font-family: 'Inter', sans-serif;
+}
+
+.home-text {
+    padding: 3%;
+}
+
+.content {
+    padding-top: 60px;
+}
+
+
+
+
+

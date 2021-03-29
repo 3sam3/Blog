@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} blog {% endblock%}
+
+
+{% block content %}
+
+<section class="centered">
+      <div class="container-fluid row">
+        <div class="col-lg-12 offset-lg-3 col-md-10">
+          <div class="">
+            <h1>{{post.title}}</h1>
+            <h2>{{post.subtitle}}</h2>
+            <span>Posted by <a href="#">{{post.author}} </a> on {{post.date}}</span>
+          </div>
+        </div>
+      </div>
+
+    <article>
+    <div class="container-fluid ">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3 col-md-8">
+            <p> {{ post.body|safe }} </p>
+
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+{% endblock %}
