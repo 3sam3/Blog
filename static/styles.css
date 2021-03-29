@@ -34,6 +34,14 @@
     font-size: 1.5rem;
 }
 
+.nav-item {
+    padding: 2%;
+}
+
+.navbar-toggler-icon {
+    padding: 2%;
+}
+
 .picture-house {
     max-width: 700px;
 }
