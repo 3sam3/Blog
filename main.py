@@ -7,18 +7,19 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import date
 import functools
 from flask_ckeditor import CKEditor, CKEditorField
+import os
 
 app = Flask(__name__)
 Bootstrap(app)
 ckeditor = CKEditor(app)
 
-app.secret_key = "not-another-secret-key"
-app.config['ADMIN_PASSWORD'] = "secret"
+app.secret_key = os.environ.get("SECRET_KEY")
+app.config['ADMIN_PASSWORD'] = os.environ.get("ADMIN_PASSWORD")
 app.config['SITE_WIDTH'] = 800
 
 # Database -----------------------------------------------
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///blog.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
