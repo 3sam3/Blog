@@ -14,6 +14,9 @@
             <a href="#">{{post.author}}</a>
             on {{post.date}}
           </p>
+           {% if session.get('logged_in'): %}
+            <a href="{{url_for('delete_post', post_id=post.id) }}">✘</a>
+            {% endif %}
         </div>
         <hr>
         {% endfor %}

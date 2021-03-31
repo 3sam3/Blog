@@ -8,8 +8,8 @@ from datetime import date
 import functools
 from flask_ckeditor import CKEditor, CKEditorField
 import os
-#need to add postgres support and secret all variables. Also add create delete paths.
-#also need to add edit and delete paths to blog posts
+# need to add postgres support and secret all variables. Also add create delete paths.
+# also need to add edit and delete paths to blog posts
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -63,7 +63,7 @@ class BlogSubmission(FlaskForm):
     subtitle = StringField("Subtitle", validators=[DataRequired()])
     author = StringField("Your Name", validators=[DataRequired()])
     body = CKEditorField("Blog Content", validators=[DataRequired()])
-    post_url = StringField("Post URL", validators=[DataRequired()])
+    post_url = StringField("Post URL")
     category = StringField("Post Category")
     submit = SubmitField("Submit Post")
 
@@ -149,6 +149,37 @@ def create():
         db.session.commit()
         return redirect(url_for("go_words"))
     return render_template('create.html', form=blog_entry)
+
+
+@app.route("/edit-post/<int:post_id>", methods=["GET", "POST"])
+@login_required
+def edit_post(post_id):
+    post = Post.query.get(post_id)
+    edit_form = BlogSubmission(
+        title=post.title,
+        subtitle=post.subtitle,
+        author=post.author,
+        body=post.body,
+        post_url=post.post_url
+    )
+    if edit_form.validate_on_submit():
+        post.title = edit_form.title.data
+        post.subtitle = edit_form.subtitle.data
+        post.author = edit_form.author.data
+        post.body = edit_form.body.data
+        post.post_url = edit_form.post_url.data
+        db.session.commit()
+        return redirect(url_for("go_words"))
+    return render_template("create.html", form=edit_form, is_edit=True)
+
+
+@app.route("/delete/<int:post_id>")
+@login_required
+def delete_post(post_id):
+    post_to_delete = Post.query.get(post_id)
+    db.session.delete(post_to_delete)
+    db.session.commit()
+    return redirect(url_for('go_words'))
 
 
 @app.route("/post/<post_url>")
