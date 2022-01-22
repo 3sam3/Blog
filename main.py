@@ -101,6 +101,10 @@ def go_words():
 def go_pictures():
     return render_template('pictures.html')
 
+@app.route("/point_shoot")
+def go_photo_dump():
+    return render_template('point_shoot.html')
+
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
