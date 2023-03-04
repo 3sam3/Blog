@@ -85,8 +85,8 @@ def hello():
     return render_template('index.html')
 
 
-@app.route("/home")
-def go_home():
+@app.route("/about")
+def go_about():
     return render_template('home.html')
 
 
