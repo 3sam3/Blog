@@ -42,8 +42,12 @@
     padding: 2%;
 }
 
-.picture-house {
+.picture-house-full {
     max-width: 700px;
+}
+
+.picture-house-full {
+    max-width: 90%;
 }
 
 p {
